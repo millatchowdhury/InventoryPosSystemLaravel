@@ -29,14 +29,16 @@
 <script>
 
 
-   async function FillUpUpdateForm(id){
-        document.getElementById('updateID').value=id;
+    async function FillUpUpdateData(id){
+        document.getElementById("updateID").value = id;
         showLoader();
-        let res=await axios.post("/category-by-id",{id:id})
+        let res = await axios.post("/api/category-by-id", {id:id});
         hideLoader();
-        document.getElementById('categoryNameUpdate').value=res.data['name'];
+        document.getElementById("categoryNameUpdate").value = res.data['name'];
     }
 
+
+    //update here
     async function Update() {
 
         let categoryName = document.getElementById('categoryNameUpdate').value;
@@ -48,7 +50,7 @@
         else{
             document.getElementById('update-modal-close').click();
             showLoader();
-            let res = await axios.post("/update-category",{name:categoryName,id:updateID})
+            let res = await axios.post("/api/update-category",{name:categoryName,id:updateID})
             hideLoader();
 
             if(res.status===200 && res.data===1){
