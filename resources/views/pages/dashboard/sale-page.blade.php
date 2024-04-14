@@ -226,7 +226,7 @@
            }
            else{
                let item={product_name:PName,product_id:PId,qty:PQty,sale_price:PTotalPrice};
-               InvoiceItemList.push(item);
+               InvoiceItemList.push(item);  //waiting 
                console.log(InvoiceItemList);
                $('#create-modal').modal('hide')
                ShowInvoiceItem();
@@ -244,8 +244,8 @@
         }
 
 
-        async function CustomerList(){
-            let res=await axios.get("/list-customer");
+        async function CustomerList(){   // ok
+            let res=await axios.get("/api/list-customer");
             let customerList=$("#customerList");
             let customerTable=$("#customerTable");
             customerTable.DataTable().destroy();
@@ -282,7 +282,7 @@
 
 
         async function ProductList(){
-            let res=await axios.get("/list-product");
+            let res=await axios.get("/api/list-product");
             let productList=$("#productList");
             let productTable=$("#productTable");
             productTable.DataTable().destroy();
@@ -342,7 +342,7 @@
             else{
 
                 showLoader();
-                let res=await axios.post("/invoice-create",Data)
+                let res=await axios.post("/api/invoice-create",Data)
                 hideLoader();
                 if(res.data===1){
                     window.location.href='/invoicePage'

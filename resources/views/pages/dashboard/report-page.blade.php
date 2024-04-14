@@ -27,7 +27,7 @@
         if(FormDate.length === 0 || ToDate.length === 0){
             errorToast("Date Range Required !")
         }else{
-            window.open('/sales-report/'+FormDate+'/'+ToDate);
+            window.open('/api/sales-report/'+FormDate+'/'+ToDate);
         }
     }
 
